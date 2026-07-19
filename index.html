@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#34443d">
+  <meta name="description" content="耳悦 ER YUE，一处让感官慢慢安静下来的疗愈空间。">
+  <title>耳悦 ER YUE｜让身体回到安静</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../eryuechiangmai/styles/">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --moss: #4c5e55;
+      --moss-dark: #303c36;
+      --paper: #f1eee5;
+      --stone: #d8d3c7;
+      --gold: #b49d66;
+      --clay: #a9725d;
+      --ink: #3d403a;
+      --white: #fbf8f1;
+      --display: "Noto Serif SC", serif;
+      --body: "Noto Sans SC", sans-serif;
+      --english: "Cormorant Garamond", serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 300;
+      letter-spacing: .08em;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      pointer-events: none;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+
+    .kicker {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 27px 5.5%;
+      color: var(--white);
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wordmark__cn {
+      font: 500 21px var(--display);
+      letter-spacing: .16em;
+    }
+
+    .wordmark__en {
+      font: 500 11px var(--english);
+      letter-spacing: .24em;
+    }
+
+    .site-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 11px;
+    }
+
+    .site-nav__book {
+      border: 1px solid rgba(251, 248, 241, .75);
+      padding: 9px 16px;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: flex-end;
+      min-height: 100svh;
+      padding: 0 9% 10vh;
+      background: var(--moss-dark);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background: url("images/IMG-20260714-WA0003(1).jpg") center 45% / cover no-repeat;
+      filter: saturate(.68) brightness(.55) sepia(.12);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(30, 38, 34, .78), rgba(34, 42, 37, .32) 55%, rgba(26, 32, 29, .18)),
+        linear-gradient(0deg, rgba(25, 32, 29, .77), transparent 54%);
+    }
+
+    .hero-box {
+      max-width: 650px;
+      color: var(--white);
+    }
+
+    .hero__title {
+      margin: 21px 0;
+      font: 400 clamp(38px, 5.3vw, 78px) / 1.42 var(--display);
+      letter-spacing: .14em;
+    }
+
+    .hero__description {
+      max-width: 330px;
+      margin: 0;
+      color: rgba(252, 248, 239, .82);
+      font-size: 13px;
+      line-height: 2.15;
+    }
+
+    .brand-medallion {
+      position: absolute;
+      right: 8%;
+      bottom: 9vh;
+      width: 142px;
+      height: 142px;
+      overflow: hidden;
+      border: 1px solid rgba(208, 190, 132, .9);
+      border-radius: 50%;
+      box-shadow: 0 10px 38px rgba(0, 0, 0, .3);
+    }
+
+    .brand-medallion img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      right: 4.3%;
+      bottom: 45px;
+      color: rgba(255, 255, 255, .75);
+      font-size: 9px;
+      letter-spacing: .23em;
+      writing-mode: vertical-rl;
+    }
+
+    .manifesto {
+      max-width: 1200px;
+      padding: 21vh 12% 18vh;
+    }
+
+    .manifesto__text {
+      max-width: 910px;
+      margin: 25px 0 0;
+      font: 400 clamp(24px, 3.3vw, 48px) / 1.78 var(--display);
+      letter-spacing: .14em;
+    }
+
+    .manifesto__text em {
+      color: var(--moss);
+      font-style: normal;
+    }
+
+    .space {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      min-height: 720px;
+      background: var(--stone);
+    }
+
+    .space__photo {
+      position: relative;
+      min-height: 620px;
+      background: url("images/IMG-20260714-WA0003(1).jpg") center / cover no-repeat;
+      filter: saturate(.68);
+    }
+
+    .space__photo::after {
+      content: "ER YUE · A DOORWAY TO STILLNESS";
+      position: absolute;
+      bottom: 26px;
+      left: 30px;
+      color: var(--white);
+      font: 400 12px var(--english);
+      letter-spacing: .19em;
+    }
+
+    .space__copy {
+      align-self: center;
+      padding: 10% 18%;
+    }
+
+    .section-title {
+      margin: 18px 0 23px;
+      font: 400 clamp(30px, 3.5vw, 50px) / 1.55 var(--display);
+      letter-spacing: .13em;
+    }
+
+    .body-copy {
+      max-width: 330px;
+      margin: 0;
+      font-size: 13px;
+      line-height: 2.25;
+    }
+
+    .gold-rule {
+      width: 42px;
+      height: 1px;
+      margin: 30px 0;
+      background: var(--gold);
+    }
+
+    .space__caption {
+      color: var(--gold);
+      font: 400 17px var(--english);
+      letter-spacing: .13em;
+    }
+
+    .rituals {
+      padding: 20vh 8% 7vh;
+    }
+
+    .rituals__heading {
+      margin: 0 0 14vh 9%;
+    }
+
+    .ritual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: 1170px;
+      margin: 0 auto 16vh;
+    }
+
+    .ritual--reverse {
+      direction: rtl;
+    }
+
+    .ritual--reverse > * {
+      direction: ltr;
+    }
+
+    .ritual__photo {
+      height: 630px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .ritual__photo--ear {
+      background-image: url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1500&q=90");
+    }
+
+    .ritual__photo--release {
+      background-image: url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1500&q=90");
+    }
+
+    .ritual__photo--scent {
+      background-image: url("https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1500&q=90");
+    }
+
+    .ritual__copy {
+      max-width: 480px;
+      padding: 13% 15%;
+    }
+
+    .ritual:nth-child(odd) .ritual__copy {
+      margin-left: auto;
+    }
+
+    .ritual__index {
+      color: var(--gold);
+      font: 400 32px var(--english);
+      letter-spacing: .08em;
+    }
+
+    .atmosphere {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      min-height: 680px;
+      background: var(--moss);
+      color: var(--white);
+    }
+
+    .atmosphere__copy {
+      align-self: center;
+      padding: 20% 16% 15%;
+    }
+
+    .atmosphere__copy .body-copy {
+      color: rgba(255, 255, 255, .77);
+    }
+
+    .atmosphere__photo {
+      min-height: 500px;
+      background: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=90") center / cover no-repeat;
+      filter: saturate(.65) brightness(.82);
+    }
+
+    .reservation {
+      padding: 19vh 9% 8vh;
+      background: var(--white);
+    }
+
+    .reservation__grid {
+      display: grid;
+      grid-template-columns: 39% 1fr;
+      gap: 12%;
+      max-width: 1130px;
+      margin: auto;
+    }
+
+    .contact-list {
+      margin: 42px 0 0;
+      font-size: 12px;
+      line-height: 2.25;
+    }
+
+    .contact-list dt {
+      float: left;
+      width: 52px;
+      color: var(--gold);
+    }
+
+    .contact-list dd {
+      margin: 0 0 4px 62px;
+    }
+
+    .form {
+      padding-top: 24px;
+    }
+
+    .form__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .form__field {
+      margin-bottom: 30px;
+    }
+
+    .form__field label {
+      display: block;
+      margin-bottom: 9px;
+      color: #777b73;
+      font-size: 10px;
+      letter-spacing: .2em;
+    }
+
+    .form__field input {
+      width: 100%;
+      padding: 9px 0;
+      color: var(--ink);
+      border: 0;
+      border-bottom: 1px solid #aaa99e;
+      outline: 0;
+      background: transparent;
+      font: 300 13px var(--body);
+      letter-spacing: .08em;
+    }
+
+    .form__field input:focus {
+      border-color: var(--moss);
+    }
+
+    .form__submit {
+      padding: 14px 28px;
+      color: var(--white);
+      border: 1px solid var(--moss);
+      background: var(--moss);
+      cursor: pointer;
+      font: 400 11px var(--body);
+      letter-spacing: .18em;
+      transition: .3s ease;
+    }
+
+    .form__submit:hover {
+      color: var(--moss);
+      background: transparent;
+    }
+
+    .form__message {
+      height: 20px;
+      margin: 18px 0 0;
+      color: var(--clay);
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .form__message.is-visible {
+      opacity: 1;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1130px;
+      margin: 13vh auto 0;
+      padding-top: 20px;
+      color: #73776f;
+      border-top: 1px solid #cbc8be;
+      font-size: 9px;
+    }
+
+    .footer__brand {
+      color: var(--moss);
+      font: 500 22px var(--english);
+      letter-spacing: .15em;
+    }
+
+    .footer__brand span {
+      margin-right: 7px;
+      font: 500 16px var(--display);
+    }
+
+    .in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .site-nav { padding: 20px 7%; }
+      .site-nav__links a:not(.site-nav__book) { display: none; }
+      .hero { padding: 0 10% 12vh; }
+      .hero__title { font-size: 38px; }
+      .brand-medallion { right: 8%; bottom: 5vh; width: 102px; height: 102px; }
+      .hero__scroll { display: none; }
+      .manifesto { padding: 15vh 10%; }
+      .manifesto__text { font-size: 25px; }
+      .space, .atmosphere, .reservation__grid { grid-template-columns: 1fr; }
+      .space__photo { min-height: 460px; }
+      .space__copy { padding: 17vh 12%; }
+      .rituals { padding: 15vh 8% 0; }
+      .rituals__heading { margin: 0 0 9vh 4%; }
+      .ritual, .ritual--reverse { grid-template-columns: 1fr; direction: ltr; margin-bottom: 15vh; }
+      .ritual__photo { height: 470px; }
+      .ritual__copy { padding: 12% 7%; }
+      .atmosphere__copy { padding: 18vh 12%; }
+      .atmosphere__photo { min-height: 440px; }
+      .reservation { padding: 15vh 9% 7vh; }
+      .form__grid { grid-template-columns: 1fr; gap: 0; }
+      .footer { flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 9vh; }
+      .hero::before { background-position: 58% center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .in { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="wordmark" href="#top" aria-label="耳悦首页">
+      <span class="wordmark__cn">耳悦</span>
+      <span class="wordmark__en">ER YUE</span>
+    </a>
+
+    <nav class="site-nav__links" aria-label="主导航">
+      <a href="#rituals">体验</a>
+      <a href="#space">空间</a>
+      <a class="site-nav__book" href="#reservation">安静预约</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="耳悦品牌首屏">
+      <div class="hero-box in">
+        <span class="kicker">Ear cleaning · body release</span>
+        <h1 class="hero__title">让外面的喧嚣，<br>停在这一扇门外。</h1>
+        <p class="hero__description">耳悦是一处为感官留白的疗愈空间。放慢一点，重新听见身体最安静的声音。</p>
+      </div>
+
+      <div class="brand-medallion">
+        <img src="images/IMG-20260714-WA0002.jpg" alt="耳悦 ER YUE 原有品牌标识">
+      </div>
+
+      <span class="hero__scroll">SCROLL TO ENTER</span>
+    </section>
+
+    <section class="manifesto in">
+      <span class="kicker">A quiet place within the city</span>
+      <p class="manifesto__text">不必逃离城市。只要给自己一点时间，便能在<em>温柔的光、气息与触感</em>之间，慢慢回到内在的安静。</p>
+    </section>
+
+    <section class="space" id="space">
+      <div class="space__photo in" aria-label="耳悦店面空间照片"></div>
+
+      <div class="space__copy in">
+        <span class="kicker">Enter slowly</span>
+        <h2 class="section-title">从踏进门的那刻起，<br>一切都慢下来。</h2>
+        <p class="body-copy">白砖墙、茶绿色帘幕、原木和暖光，共同收住街道的扰动。这里没有催促，只有被悉心安排好的温度与时间。</p>
+        <div class="gold-rule"></div>
+        <p class="space__caption">A ROOM MADE FOR PAUSE</p>
+      </div>
+    </section>
+
+    <section class="rituals" id="rituals">
+      <div class="rituals__heading in">
+        <span class="kicker">Three quiet rituals</span>
+        <h2 class="section-title">不是服务清单，<br>是三种回到自己的方式。</h2>
+      </div>
+
+      <article class="ritual">
+        <div class="ritual__photo ritual__photo--ear in" aria-hidden="true"></div>
+        <div class="ritual__copy in">
+          <span class="ritual__index">I</span>
+          <h2 class="section-title">酥痒采耳</h2>
+          <p class="body-copy">从极轻的羽触开始，感官逐渐苏醒。它像一场微小而专注的聆听，让身体重新感受那些常被忽略的细微变化。</p>
+        </div>
+      </article>
+
+      <article class="ritual ritual--reverse">
+        <div class="ritual__photo ritual__photo--release in" aria-hidden="true"></div>
+        <div class="ritual__copy in">
+          <span class="ritual__index">II</span>
+          <h2 class="section-title">中式经络释压</h2>
+          <p class="body-copy">顺着身体的节律，松开藏在肩颈与呼吸里的紧绷。让被日常牵引的情绪，也找到一个可以安放的位置。</p>
+        </div>
+      </article>
+
+      <article class="ritual">
+        <div class="ritual__photo ritual__photo--scent in" aria-hidden="true"></div>
+        <div class="ritual__copy in">
+          <span class="ritual__index">III</span>
+          <h2 class="section-title">芳香疗愈</h2>
+          <p class="body-copy">草本、木质与柔和花香，在空气中不疾不徐地展开。气味替思绪留下一点空白，也把人带回当下。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="atmosphere">
+      <div class="atmosphere__copy in">
+        <span class="kicker">The atmosphere</span>
+        <h2 class="section-title">光、温度与香气，<br>都只为了让你放松。</h2>
+        <p class="body-copy">经由调校的暖光、恰好的空气湿度、低声流动的音乐与私密包厢，组成耳悦的安静。无需刻意做什么，只需安心在这里停留。</p>
+      </div>
+
+      <div class="atmosphere__photo in" aria-hidden="true"></div>
+    </section>
+
+    <section class="reservation" id="reservation">
+      <div class="reservation__grid">
+        <div class="reservation__intro in">
+          <span class="kicker">By appointment only</span>
+          <h2 class="section-title">为自己，<br>留下一段空白。</h2>
+          <p class="body-copy">告诉我们你方便的时间，我们会以不打扰的方式为你安排一段专属体验。</p>
+
+          <dl class="contact-list">
+            <dt>地址</dt><dd>耳悦 ER YUE · 预约后提供到店指引</dd>
+            <dt>营业</dt><dd>每日 11:00 — 22:00</dd>
+            <dt>微信</dt><dd>ER-YUE-QUIET</dd>
+            <dt>电话</dt><dd>+60 · 请填写您的联系电话</dd>
+          </dl>
+        </div>
+
+        <form class="form in" id="booking-form">
+          <div class="form__grid">
+            <div class="form__field">
+              <label for="name">姓名 / NAME</label>
+              <input id="name" name="name" required>
+            </div>
+
+            <div class="form__field">
+              <label for="phone">联系电话 / PHONE</label>
+              <input id="phone" name="phone" required inputmode="tel">
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__field">
+              <label for="wechat">微信 / WECHAT</label>
+              <input id="wechat" name="wechat">
+            </div>
+
+            <div class="form__field">
+              <label for="date">希望预约日期 / DATE</label>
+              <input id="date" name="date" required type="date">
+            </div>
+          </div>
+
+          <button class="form__submit" type="submit">提交预约意向　→</button>
+          <p class="form__message" id="form-message" role="status">已收到。我们会安静地与您确认时间。</p>
+        </form>
+      </div>
+
+      <footer class="footer">
+        <div class="footer__brand"><span>耳悦</span>ER YUE</div>
+        <div>EAR CLEANING · BODY RELEASE · AROMATIC RITUAL</div>
+        <div>© 2026 ER YUE</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".in").forEach((element) => observer.observe(element));
+
+    const dateInput = document.querySelector("#date");
+    dateInput.min = new Date().toISOString().slice(0, 10);
+
+    const bookingForm = document.querySelector("#booking-form");
+    const formMessage = document.querySelector("#form-message");
+
+    bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!bookingForm.reportValidity()) return;
+
+      bookingForm.reset();
+      formMessage.classList.add("is-visible");
+    });
+  </script>
+</body>
+</html>
